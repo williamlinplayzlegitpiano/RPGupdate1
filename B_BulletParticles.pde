@@ -12,6 +12,8 @@ class bparticles extends GameObject {
     velocity = new PVector (0, 1);
     velocity.rotate(random(-PI, PI));
     velocity.setMag(6);
+    roomX = myHero.roomX;
+    roomY = myHero.roomY;
   }
 
   void show() {

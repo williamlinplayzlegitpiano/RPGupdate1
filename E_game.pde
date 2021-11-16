@@ -5,6 +5,7 @@ void game() {
   drawDarkness();
   drawMiniMap();
   drawHeroDeath();
+  drawCrosshair();
 }
 
 void drawRoom() {
@@ -84,7 +85,18 @@ void drawDarkness() {
 }
 
 void drawHeroDeath() {
- if(myHero.hp <= 0) {
-  mode = gameover; 
- }
+  if (myHero.hp <= 0) {
+    mode = gameover;
+  }
+}
+
+void drawCrosshair() {
+  //ellipseMode(CENTER);
+  //stroke(255, 0, 0);
+  //strokeWeight(3);
+  //noFill();
+  //ellipse(mouseX, mouseY, 20, 20);
+  //ellipse(mouseX, mouseY, 40, 40);
+  //line(mouseX-50,mouseY,mouseX+50,mouseY);
+  //line(mouseX, mouseY-50, mouseX, mouseY+50);
 }

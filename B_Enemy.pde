@@ -49,14 +49,6 @@ class Enemy extends GameObject {
           }
         }
       }
-      
-      if (obj instanceof Hero) {
-        float d = dist(obj.location.x, obj.location.y, location.x, location.y);
-        if (d <= size/2 + obj.size/2) {
-            hp = hp - int(obj.velocity.mag());
-            obj.hp = 0;
-        }
-      }
       i++;
     }
   }

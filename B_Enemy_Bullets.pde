@@ -1,22 +1,21 @@
-class Bullet extends GameObject {
+class EnemyBullets extends GameObject {
 
-  color col;
+  color bulletcolor;
 
-  Bullet(PVector a, color c, int s) {
-    hp = 1;
-    location = new PVector(myHero.location.x, myHero.location.y);
-    velocity = a;
-    velocity.add(myHero.velocity);
-    col = c;
+  EnemyBullets(PVector a, float x, float y, color c, int s) {
     size = s;
+    hp = 1;
+    location = new PVector(x, y);
+    velocity = a;
+    bulletcolor = c;
     roomX = myHero.roomX;
     roomY = myHero.roomY;
   }
 
   void show() {
-    fill(chocolate);
-    stroke(chocolate);
-    circle(location.x, location.y, size);
+    stroke(white);
+    fill(bulletcolor);
+    ellipse(location.x, location.y, size, size);
   }
 
   void act() {

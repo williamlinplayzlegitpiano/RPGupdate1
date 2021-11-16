@@ -48,10 +48,12 @@ color white  = #FFFFFF;
 
 PImage map;
 
+int immunity, immunitytimer;
+
 void setup() {
-  
+
   gun = 1;
-  
+
   size(800, 600, FX2D);
   mode = 1;
 
@@ -73,8 +75,10 @@ void setup() {
   myObjects.add(new Enemy());
   myObjects.add(new Follower(1, 2));
   myObjects.add(new Follower(2, 1));
-  
-  
+  myObjects.add(new Shooter(1, 3));
+  myObjects.add(new Shooter(3, 1));
+
+
   map = loadImage("map.png");
 
   darkness = new ArrayList<DarknessCell>(1000);
@@ -84,13 +88,12 @@ void setup() {
     darkness.add(new DarknessCell(x, y, size));
     x += size;
     if (x >= width) {
-     x = 0;
-     y += size;
+      x = 0;
+      y += size;
     }
-    
+
     gun = 0;
   }
-  
 }
 
 

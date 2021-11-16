@@ -4,30 +4,48 @@ class Hero extends GameObject {
   Weapons myWeapon;
 
   Hero() {
-    super();
+    location = new PVector(width/2, height/2);
+    velocity = new PVector(0, 0);
+    hp = 3;
     speed = 5;
     roomX = 1;
     roomY = 1;
     size = 40;
     myWeapon = new SniperRifle();
-    //if (gun == 1) {
-    //  myWeapon = new SniperRifle();
-    //} else if (gun == 2) {
-    //  myWeapon = new Shotgun();
-    //} else {
-    //  myWeapon = new Pistol();
-    //}
+    immunity = 0;
   }
 
   void show() {
     fill(chocolate);
-    stroke(strawberry);
+    if (immunity <= 180) {
+      stroke(white);
+    } else {
+      stroke(strawberry);
+    }
     strokeWeight(2);
     circle(location.x, location.y, size);
   }
 
   void act() {
     super.act();
+
+    immunity++;
+    if (immunity >= 180) {
+      int i = 0;
+      while (i<myObjects.size()) {
+        GameObject obj = myObjects.get(i);
+        if (obj instanceof Enemy) {
+          float d = dist(obj.location.x, obj.location.y, location.x, location.y);
+          if (d <= size/2 + obj.size/2) {
+            hp--;
+            immunity = 0;
+            println(666);
+          }
+        }
+        i++;
+      }
+    }
+
     if (w) velocity.y = -speed;
     if (s) velocity.y = speed;
     if (a) velocity.x = -speed;
